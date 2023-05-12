@@ -10,7 +10,7 @@ Variables    ../locators/homePage.py
 Variables    ../locators/registerPage.py
 Variables    ../TestData/invalidRegisterPageTestData.py
 Test Setup    Open Browser    ${url}    ${browserName}
-Test Teardown    Close Browser
+# Test Teardown    Close Browser
 
 *** Variables ***
 ${firstName}    FakerLibrary.First Name
@@ -35,7 +35,6 @@ Register User and Validating Registration details
     Input Text    ${txt_fName}    ${firstName}    
     
     Input Text    ${txt_lName}    ${lastName}
-
 
     Select From List By Label    ${date_locator}    ${dateIndex}
     Select From List By Label    ${month_locator}    ${monthIndex} 
@@ -77,7 +76,7 @@ Register with incorrect data and validating
     Input Password    ${txt_password}    ${invalidConfirmPassword} 
    
     Click Button    ${register_btn} 
-    # Wait Until Page Contains    ${successRegisterPagetxt}
+    Wait Until Page Contains    ${errorMsgTxt}         
 
     
    
